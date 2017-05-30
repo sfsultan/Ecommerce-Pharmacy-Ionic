@@ -3,8 +3,15 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { ContactPage } from '../pages/contact/contact';
+import { ProductPage } from '../pages/product/product';
+import { ProductDetailPage } from '../pages/product-detail/product-detail';
+import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { OrderPage } from '../pages/order/order';
+import { PrivacyPage } from '../pages/privacy/privacy';
+import { TermsPage } from '../pages/terms/terms';
+import { FaqPage } from '../pages/faq/faq';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,8 +28,13 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'How to Order', component: HomePage },
+      { title: 'Place Order', component: OrderPage },
+      { title: 'Products', component: ProductPage },
+      { title: 'About Us', component: AboutPage },
+      { title: 'Privacy Policy', component: PrivacyPage },
+      { title: 'Terms of Service', component: TermsPage },
+      { title: 'FAQ', component: FaqPage }
     ];
 
   }
