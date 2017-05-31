@@ -80,13 +80,9 @@ export class ProductPage {
         .then(data => {
           console.log('openProductDetail.receivedData');
           console.log(data);
-          // for(let product of data) {
-            // this.productById = product;
-            // console.log(data);
             this.navCtrl.push(ProductDetailPage, {
               product: data
             });
-          // }
           resolve(true);
         });
       });
