@@ -14,30 +14,30 @@ import { ProductDetailPage } from '../product-detail/product-detail';
 @Component({
   selector: 'page-product',
   templateUrl: 'product.html',
-  providers:[GlobalDataServiceProvider]
+  providers: [GlobalDataServiceProvider]
 })
 export class ProductPage {
 
-  public products:any = [];
-  public query:string;
-  private start:number=0;
-  public productById:any;
+  public products: any = [];
+  public query: string;
+  private start: number = 0;
+  public productById: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public globalService: GlobalDataServiceProvider) {
-  	this.loadProducts();
+    this.loadProducts();
   }
 
   loadProducts() {
 
     return new Promise(resolve => {
       this.globalService.load(this.start)
-      .then(data => {
-        console.log(data);
-        for(let product of data) {
-          this.products.push(product);
-        }
-        resolve(true);
-      });
+        .then(data => {
+          console.log(data);
+          for (let product of data) {
+            this.products.push(product);
+          }
+          resolve(true);
+        });
     });
   }
 
@@ -53,43 +53,38 @@ export class ProductPage {
       this.query = val.toLowerCase();
       return new Promise(resolve => {
         this.globalService.searchData(this.start, this.query)
-        .then(data => {
-          console.log(data);
-          for(let product of data) {
-            this.products.push(product);
-          }
-          resolve(true);
-        });
+          .then(data => {
+            console.log(data);
+            for (let product of data) {
+              this.products.push(product);
+            }
+            resolve(true);
+          });
       });
     }
   }
 
-  doInfinite(infiniteScroll:any) {
+  doInfinite(infiniteScroll: any) {
     console.log('Begin async operation: ' + this.start);
     this.start += 50;
 
-    this.loadProducts().then(()=>{
-       infiniteScroll.complete();
-     });
+    this.loadProducts().then(() => {
+      infiniteScroll.complete();
+    });
   }
 
   openProductDetail(id) {
 
     if (id) {
       return new Promise(resolve => {
-        this.globalService.load(this.start)
-        .then(data => {
-          console.log(data);
-          for(let product of data) {
-            this.productById = product;
-            console.log('openProductDetail.receivedData');
-            console.log(this.productById);
+        this.globalService.getDataById(id)
+          .then(data => {
+            console.log(data);
             this.navCtrl.push(ProductDetailPage, {
               product: this.productById
             });
-          }
-          resolve(true);
-        });
+            resolve(true);
+          });
       });
     }
 
