@@ -49,10 +49,7 @@ export class GlobalDataServiceProvider {
   }
 
   getDataById(id:number=null) {
-
-
     console.log('getDataById: ' + id);
-
     return new Promise(resolve => {
       this.http.get(this.url + '?id=' + id)
         .map(res => res.json())

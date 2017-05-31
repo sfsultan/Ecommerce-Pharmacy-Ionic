@@ -74,20 +74,19 @@ export class ProductPage {
   }
 
   openProductDetail(id) {
-
     if (id) {
       return new Promise(resolve => {
-        this.globalService.load(this.start)
+        this.globalService.getDataById(id)
         .then(data => {
+          console.log('openProductDetail.receivedData');
           console.log(data);
-          for(let product of data) {
-            this.productById = product;
-            console.log('openProductDetail.receivedData');
-            console.log(this.productById);
+          // for(let product of data) {
+            // this.productById = product;
+            // console.log(data);
             this.navCtrl.push(ProductDetailPage, {
-              product: this.productById
+              product: data
             });
-          }
+          // }
           resolve(true);
         });
       });
