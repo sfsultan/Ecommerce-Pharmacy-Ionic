@@ -7,20 +7,50 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Products</ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>Medicines</ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary"
+                   [(ngModel)]="queryText"
+                   (ionInput)="getProducts($event)"
+                   placeholder="Search">
+    </ion-searchbar>
+  </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="getProducts($event)"></ion-searchbar>
+  <!--<ion-searchbar (ionInput)="getProducts($event)"></ion-searchbar>-->
 
   <ion-list>
-    <ion-item *ngFor="let product of products" (click)="openProductDetail(product.id)">{{product.title}}</ion-item>
+    <ion-item-sliding #item *ngFor="let product of products">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{product.photo == '' ? 'assets/img/no-image.jpg' : 'https://globalcare.com.pk/products/' + product.photo}}">
+        </ion-avatar>
+        <h2>{{product.title}}</h2>
+        <p><ion-icon name="pricetag"></ion-icon> {{product.price}} PKR</p>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button (click)="addToCart(product.id)">
+          <ion-icon name="cart"></ion-icon>
+          Add to Cart
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
+
+  <ion-fab bottom right #fab>
+    <button ion-fab (click)="openCartPage()"><ion-icon name="cart"></ion-icon></button>
+  </ion-fab>
 </ion-content>

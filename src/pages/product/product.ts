@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, Nav, NavController, NavParams, ToastController } from 'ionic-angular';
 import { GlobalDataServiceProvider } from '../../providers/global-data-service/global-data-service';
+import { UserDataProvider } from '../../providers/user-data/user-data';
 
-import { ProductDetailPage } from '../product-detail/product-detail';
+import { CartPage } from '../cart/cart';
 
 /**
  * Generated class for the ProductPage page.
@@ -23,7 +24,7 @@ export class ProductPage {
   private start:number=0;
   public productById:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public globalService: GlobalDataServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public globalService: GlobalDataServiceProvider, public toastCtrl: ToastController, public userData: UserDataProvider) {
   	this.loadProducts();
   }
 
@@ -47,7 +48,7 @@ export class ProductPage {
     let val = ev.target.value;
     this.products = [];
     // this.presentLoading();
-    console.log(val.toLowerCase());
+    // console.log(val.toLowerCase());
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.query = val.toLowerCase();
@@ -61,6 +62,9 @@ export class ProductPage {
           resolve(true);
         });
       });
+    } else {
+      this.start = 0;
+      this.loadProducts();
     }
   }
 
@@ -73,26 +77,57 @@ export class ProductPage {
      });
   }
 
-  openProductDetail(id) {
-    if (id) {
-      return new Promise(resolve => {
-        this.globalService.getDataById(id)
-        .then(data => {
-          console.log('openProductDetail.receivedData');
-          console.log(data);
-            this.navCtrl.push(ProductDetailPage, {
-              product: data
-            });
-          resolve(true);
-        });
-      });
-    }
-
-
-  }
+  // openProductDetail(id) {
+  //   if (id) {
+  //     return new Promise(resolve => {
+  //       this.globalService.getDataById(id)
+  //       .then(data => {
+  //         console.log('openProductDetail.receivedData');
+  //         console.log(data);
+  //           this.navCtrl.push(ProductDetailPage, {
+  //             product: data
+  //           });
+  //         resolve(true);
+  //       });
+  //     });
+  //   }
+  // }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductPage');
+    this.showSimpleToast("Swipe left on medicine to add them to your cart");
+  }
+
+  showToastWithCloseButton(msg:string) {
+    const toast = this.toastCtrl.create({
+      message: msg,
+      showCloseButton: true,
+      closeButtonText: 'Ok'
+    });
+    toast.present();
+  }
+
+  showSimpleToast(msg:string) {
+    const toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      showCloseButton: false
+    });
+    toast.present();
+  }
+
+  addToCart(id) {
+    console.log(id);
+    this.userData.addCartItem(id);
+    this.showSimpleToast("Product added to your cart");
+  }
+
+  openCartPage() {
+    if(this.userData.listCartItemIDs().length == 0) {
+      this.showSimpleToast('Your cart is empty. Try adding some products to it.')
+    } else {
+      this.navCtrl.setRoot(CartPage);
+    }
   }
 
 }

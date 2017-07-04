@@ -1,0 +1,34 @@
+<!--
+  Generated template for the CartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>My Shoppnig Cart</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h3>Cart Items</h3>
+  <hr/>
+  <ion-list>
+    <ion-item *ngFor="let storedItem of storedCartItems; let i = index">
+      <ion-avatar item-start>
+        <img src="{{storedItem.data.photo == '' ? 'assets/img/no-image.jpg' : 'https://globalcare.com.pk/products/' + storedItem.photo}}">
+      </ion-avatar>
+      <h2>{{storedItem.data.title}}</h2>
+      <p><ion-icon name="pricetag"></ion-icon> {{storedItem.data.price}} PKR</p>
+      <h4>Quantity: {{storedItem.quantity}}</h4>
+      <ion-note item-end><a ion-button small (click)="updateCartItem(storedItem.data.id, 1)"><ion-icon name="add"></ion-icon></a><a ion-button small (click)="updateCartItem(storedItem.data.id, -1)"><ion-icon name="remove"></ion-icon></a></ion-note>
+    </ion-item>
+  </ion-list>
+  <hr/>
+  <h4 text-right>Total: {{getTotal()}} PKR</h4>
+  <button ion-button (click)="checkout()">Checkout</button>
+  <button ion-button (click)="openProductsPage()">Go Back</button>
+</ion-content>

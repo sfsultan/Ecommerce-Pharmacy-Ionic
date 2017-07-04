@@ -6,13 +6,17 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>ProductDetail</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Product Details</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <p>{{product.title}}</p>
+<ion-content padding text-center>
+  <h1 color="secondary">{{product.title}}</h1>
+  <img src="{{product.photo == '' ? 'img/no-image.jpg' : 'products/' + product.photo}}" alt="{{product.title}}">
+  <p><strong>Price: </strong>{{product.price}} PKR</p>
+  <!--<p><strong>Company: </strong>{{product.company}}</p>-->
+  <p><button ion-button (click)="addToCart(product.id)">Add to Cart</button></p>
 </ion-content>

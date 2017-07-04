@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { ContactPage } from '../contact/contact';
+import { PopoverController } from 'ionic-angular';
+import { PopoverPage } from '../about-popover/about-popover';
 /**
  * Generated class for the AboutPage page.
  *
@@ -14,12 +15,16 @@ import { ContactPage } from '../contact/contact';
   templateUrl: 'about.html',
 })
 export class AboutPage {
-  contactPage: ContactPage;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AboutPage');
+  }
+
+  presentPopover(event: Event) {
+    let popover = this.popoverCtrl.create(PopoverPage);
+    popover.present({ ev: event });
   }
 
 }

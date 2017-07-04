@@ -2,12 +2,12 @@ import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, ActionSheetController, Platform, LoadingController, Loading} from 'ionic-angular';
 
 
-import { Http, Headers, RequestOptions } from '@angular/http';
-import 'rxjs/Rx';
+// import { Http, Headers, RequestOptions } from '@angular/http';
+// import 'rxjs/Rx';
 
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { TermsPage } from '../terms/terms';
-import { PrivacyPage } from '../privacy/privacy';
+// import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+// import { TermsPage } from '../terms/terms';
+// import { PrivacyPage } from '../privacy/privacy';
 
 
 /**
