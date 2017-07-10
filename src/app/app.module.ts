@@ -2,18 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
+import { IonicStorageModule } from '@ionic/storage';
+
+import { Network } from '@ionic-native/network';
+import { Diagnostic } from '@ionic-native/diagnostic';
+
 import { MyApp } from './app.component';
-import { ContactPage } from '../pages/contact/contact';
 import { ProductPage } from '../pages/product/product';
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
 import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { OrderPage } from '../pages/order/order';
-import { OrderTab1Page } from '../pages/order-tab1/order-tab1';
-import { OrderTab2Page } from '../pages/order-tab2/order-tab2';
-import { PrivacyPage } from '../pages/privacy/privacy';
-import { TermsPage } from '../pages/terms/terms';
-import { FaqPage } from '../pages/faq/faq';
+import { PrescriptionPage } from '../pages/prescription/prescription';
+
 import { CartPage } from '../pages/cart/cart';
 import { PopoverPage } from '../pages/about-popover/about-popover';
 import { AccountInfoPage } from '../pages/account-info/account-info';
@@ -21,8 +22,6 @@ import { AccountInfoPage } from '../pages/account-info/account-info';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GlobalDataServiceProvider } from '../providers/global-data-service/global-data-service';
-
-import { IonicStorageModule } from '@ionic/storage';
 
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
@@ -32,11 +31,12 @@ import { FilePath } from '@ionic-native/file-path';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { UserDataProvider } from '../providers/user-data/user-data';
+import { NetworkServiceProvider } from '../providers/network-service/network-service';
+import { SafeHttpProvider } from '../providers/safe-http/safe-http';
 
 @NgModule({
   declarations: [
     MyApp,
-    ContactPage,
     ProductPage,
     AccountInfoPage,
     ProductDetailPage,
@@ -44,11 +44,7 @@ import { UserDataProvider } from '../providers/user-data/user-data';
     PopoverPage,
     HomePage,
     OrderPage,
-    OrderTab1Page,
-    OrderTab2Page,
-    PrivacyPage,
-    TermsPage,
-    FaqPage,
+    PrescriptionPage,
     CartPage
   ],
   imports: [
@@ -60,7 +56,7 @@ import { UserDataProvider } from '../providers/user-data/user-data';
         { component: ProductPage, name: 'ProductPage', segment: 'products' },
         { component: AboutPage, name: 'About', segment: 'about' },
         { component: HomePage, name: 'Tutorial', segment: 'tutorial' },
-        { component: OrderPage, name: 'OrderPage', segment: 'OrderPage' },
+        // { component: OrderPage, name: 'OrderPage', segment: 'OrderPage' },
       ]
     }),
     IonicStorageModule.forRoot()
@@ -68,7 +64,6 @@ import { UserDataProvider } from '../providers/user-data/user-data';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ContactPage,
     ProductPage,
     ProductDetailPage,
     AccountInfoPage,
@@ -76,11 +71,7 @@ import { UserDataProvider } from '../providers/user-data/user-data';
     PopoverPage,
     HomePage,
     OrderPage,
-    OrderTab1Page,
-    OrderTab2Page,
-    PrivacyPage,
-    TermsPage,
-    FaqPage,
+    PrescriptionPage,
     CartPage
   ],
   providers: [
@@ -93,7 +84,11 @@ import { UserDataProvider } from '../providers/user-data/user-data';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GlobalDataServiceProvider,
-    UserDataProvider
+    UserDataProvider,
+    NetworkServiceProvider,
+    Network,
+    Diagnostic,
+    SafeHttpProvider
   ]
 })
 export class AppModule {}

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, Nav, NavController, NavParams, ToastController } from 'ionic-angular';
 import { GlobalDataServiceProvider } from '../../providers/global-data-service/global-data-service';
 import { UserDataProvider } from '../../providers/user-data/user-data';
+import { AlertController } from 'ionic-angular';
 
 import { CartPage } from '../cart/cart';
 
@@ -24,7 +25,14 @@ export class ProductPage {
   private start:number=0;
   public productById:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public globalService: GlobalDataServiceProvider, public toastCtrl: ToastController, public userData: UserDataProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public globalService: GlobalDataServiceProvider,
+    public toastCtrl: ToastController,
+    public userData: UserDataProvider,
+    public alertCtrl: AlertController
+    ) {
   	this.loadProducts();
   }
 
@@ -95,7 +103,7 @@ export class ProductPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductPage');
-    this.showSimpleToast("Swipe left on medicine to add them to your cart");
+    this.showAlert('Help', 'Swipe left on medicine to add them to your cart.');
   }
 
   showToastWithCloseButton(msg:string) {
@@ -123,11 +131,20 @@ export class ProductPage {
   }
 
   openCartPage() {
-    if(this.userData.listCartItemIDs().length == 0) {
-      this.showSimpleToast('Your cart is empty. Try adding some products to it.')
+    if(this.userData.listCartItems().length == 0) {
+      this.showAlert('Help', 'Your cart is empty. Try adding some products to it.')
     } else {
       this.navCtrl.setRoot(CartPage);
     }
+  }
+
+  showAlert(title:string, subTitle:string) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: subTitle,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

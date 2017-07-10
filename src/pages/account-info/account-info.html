@@ -17,5 +17,54 @@
 
 
 <ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+        <ion-icon name="settings"></ion-icon> Settings
+      </ion-card-title>
+      <p>Here you can setup and update your personal information that will be used to deliver your orders to you. Please make sure that the information provided is accurate to avoid any unwanted delays.</p>
+    </ion-card-content>
+  </ion-card>
 
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+        Please enter the below detail.
+      </ion-card-title>
+      <form #accountForm="ngForm" novalidate>
+        <ion-list inset>
+          <ion-item>
+            <ion-label>Full Name</ion-label>
+            <ion-input [(ngModel)]="account.fullName" name="fullName" type="text" #fullName="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <p ion-text [hidden]="fullName.valid || submitted == false" color="danger" padding-left>
+            Your full name is required
+          </p>
+
+          <ion-item>
+            <ion-label>Phone Number</ion-label>
+            <ion-input [(ngModel)]="account.phoneNumber" name="phoneNumber" type="tel" #phoneNumber="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <p ion-text [hidden]="phoneNumber.valid || submitted == false" color="danger" padding-left>
+            Phone number is required
+          </p>
+
+          <ion-item>
+            <ion-label>Address</ion-label>
+            <ion-input [(ngModel)]="account.address" name="address" type="text" #address="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <p ion-text [hidden]="address.valid || submitted == false" color="danger" padding-left>
+            Address is required
+          </p>
+        </ion-list>
+
+        <div padding>
+          <button ion-button (click)="onSave(accountForm)" type="submit" block>Save & Close</button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

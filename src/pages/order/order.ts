@@ -1,16 +1,9 @@
 import { Component } from '@angular/core';
-// import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 
-// import { ToastController, ActionSheetController, Platform, LoadingController, Loading } from 'ionic-angular';
-// import { Camera, File, Transfer, FilePath } from 'ionic-native';
-// import { Camera, CameraOptions } from '@ionic-native/camera';
-// import { Camera } from '@ionic-native/camera';
-import { OrderTab1Page } from '../order-tab1/order-tab1';
+import { PrescriptionPage } from '../prescription/prescription';
 import { AboutPage } from '../about/about';
 import { ProductPage } from '../product/product';
-
-declare var cordova: any;
 
 /**
  * Generated class for the OrderPage page.
@@ -24,21 +17,27 @@ declare var cordova: any;
   templateUrl: 'order.html',
 })
 export class OrderPage {
-
-  // lastImage: string = null;
-  // loading: Loading;
+  private firstLoaded: boolean = false;
   tab1Root: any = ProductPage;
-  tab2Root: any = OrderTab1Page;
+  tab2Root: any = PrescriptionPage;
   tab3Root: any = AboutPage;
   mySelectedIndex: number;
 
-  // constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController) {
+
   constructor(navParams: NavParams) {
     this.mySelectedIndex = navParams.data.tabIndex || 0;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');
+  }
+
+  ionViewDidEnter() {
+    console.log('ionViewDidEnter OrderPage');
+      // if (!this.firstLoaded && this.tabs.getSelected().length() >= 2) {
+      //     this.tabs.getSelected().remove(0, this.tabs.getSelected().length() - 1);
+      // }
+      // this.firstLoaded = true;
   }
 
 }

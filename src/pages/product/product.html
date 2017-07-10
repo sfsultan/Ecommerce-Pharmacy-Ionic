@@ -30,17 +30,17 @@
   <ion-list>
     <ion-item-sliding #item *ngFor="let product of products">
       <ion-item>
-        <ion-avatar item-start>
-          <img src="{{product.photo == '' ? 'assets/img/no-image.jpg' : 'https://globalcare.com.pk/products/' + product.photo}}">
-        </ion-avatar>
+        <ion-thumbnail item-start>
+          <img src="{{product.photo == '' ? './assets/img/no-image.jpg' : 'https://globalcare.com.pk/products/' + product.photo}}">
+        </ion-thumbnail>
         <h2>{{product.title}}</h2>
-        <p><ion-icon name="pricetag"></ion-icon> {{product.price}} PKR</p>
+        <h3><ion-icon name="pricetag"></ion-icon> {{product.price}} PKR</h3>
+        <p *ngIf="product.formula != ''">Formula: {{product.formula}}</p>
       </ion-item>
 
       <ion-item-options side="right">
         <button ion-button (click)="addToCart(product.id)">
-          <ion-icon name="cart"></ion-icon>
-          Add to Cart
+          <ion-icon name="cart"></ion-icon> Add to Cart
         </button>
       </ion-item-options>
     </ion-item-sliding>
@@ -51,6 +51,10 @@
   </ion-infinite-scroll>
 
   <ion-fab bottom right #fab>
-    <button ion-fab (click)="openCartPage()"><ion-icon name="cart"></ion-icon></button>
+    <button ion-fab (click)="openCartPage()" color="danger"><ion-icon name="cart"></ion-icon></button>
+  </ion-fab>
+
+  <ion-fab top right #fab>
+    <button ion-fab mini (click)="showAlert('Help', 'Swipe left on medicine to add them to your cart.')" color="primary"><ion-icon name="help"></ion-icon></button>
   </ion-fab>
 </ion-content>

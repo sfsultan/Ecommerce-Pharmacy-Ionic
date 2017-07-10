@@ -14,21 +14,28 @@
 
 
 <ion-content padding>
-  <h3>Cart Items</h3>
-  <hr/>
   <ion-list>
     <ion-item *ngFor="let storedItem of storedCartItems; let i = index">
       <ion-avatar item-start>
-        <img src="{{storedItem.data.photo == '' ? 'assets/img/no-image.jpg' : 'https://globalcare.com.pk/products/' + storedItem.photo}}">
+        <img src="{{storedItem.data.photo == '' ? './assets/img/no-image.jpg' : 'https://globalcare.com.pk/products/' + storedItem.data.photo}}">
       </ion-avatar>
       <h2>{{storedItem.data.title}}</h2>
-      <p><ion-icon name="pricetag"></ion-icon> {{storedItem.data.price}} PKR</p>
+      <h3><ion-icon name="pricetag"></ion-icon> {{storedItem.data.price}} PKR</h3>
       <h4>Quantity: {{storedItem.quantity}}</h4>
-      <ion-note item-end><a ion-button small (click)="updateCartItem(storedItem.data.id, 1)"><ion-icon name="add"></ion-icon></a><a ion-button small (click)="updateCartItem(storedItem.data.id, -1)"><ion-icon name="remove"></ion-icon></a></ion-note>
+      <p *ngIf="storedItem.data.formula != ''">Formula: {{storedItem.data.formula}}</p>
+      <ion-note item-end><a ion-button small (click)="updateCartItem(storedItem.data.id, 1)"><ion-icon name="add"></ion-icon></a><br/><a ion-button small (click)="updateCartItem(storedItem.data.id, -1)"><ion-icon name="remove"></ion-icon></a></ion-note>
     </ion-item>
   </ion-list>
-  <hr/>
-  <h4 text-right>Total: {{getTotal()}} PKR</h4>
-  <button ion-button (click)="checkout()">Checkout</button>
-  <button ion-button (click)="openProductsPage()">Go Back</button>
+  <ion-card>
+    <ion-card-content>
+      <h1 text-center>Total: {{getTotal()}} PKR</h1>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content text-center>
+      <button ion-button (click)="checkout()">Checkout</button>
+      <button ion-button (click)="openProductsPage()">Go Back</button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GlobalDataServiceProvider } from '../../providers/global-data-service/global-data-service';
-
+import { Storage } from '@ionic/storage';
 /*
   Generated class for the UserDataProvider provider.
 
@@ -14,7 +14,7 @@ export class UserDataProvider {
   _cartItems = [];
   _cartItemIDs = [];
 
-  constructor(public globalService: GlobalDataServiceProvider) {
+  constructor(public globalService: GlobalDataServiceProvider, private storage: Storage) {
     console.log('Hello UserDataProvider Provider');
   }
 
@@ -142,6 +142,10 @@ export class UserDataProvider {
     }
   };
 
+  emptyCart() {
+    this._cartItems = [];
+  };
+
   updateCartItem(index: number, updateNum:number): void {
     console.log(this._cartItems);
     let itemExists = null;
@@ -163,5 +167,25 @@ export class UserDataProvider {
   listCartItemIDs():number[] {
     return this._cartItemIDs;
   };
+
+  saveAccountInfo(account:{fullName?: string, address?: string, phoneNumber?: string}) {
+    this.storage.set('fullName', account.fullName);
+    this.storage.set('phoneNumber', account.phoneNumber);
+    this.storage.set('address', account.address);
+  }
+
+  getAccountInfo() {
+    let account:{fullName?: string, address?: string, phoneNumber?: string} = {};
+    this.storage.get('fullName').then((val) => {
+      account.fullName = val;
+    });
+    this.storage.get('phoneNumber').then((val) => {
+      account.phoneNumber = val;
+    });
+    this.storage.get('address').then((val) => {
+      account.address = val;
+    });
+    return account;
+  }
 
 }

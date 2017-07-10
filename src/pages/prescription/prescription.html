@@ -1,0 +1,42 @@
+<!--
+  Generated template for the PrescriptionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color='primary'>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>Upload Prescription</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+        <ion-icon name="information-circle"></ion-icon> Select an image to upload
+      </ion-card-title>
+      <p>You can select a picture of your doctor's prescription from your phone's gallery and upload it to place an order. Our parmacists will analyse it and contact you for confirmation.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <button ion-button (click)='openGallery()' medium>Select Prescription</button>
+      <button ion-button (click)='uploadImage()' medium [disabled]="lastImage === null" color='danger'><ion-icon name="cloud-upload"></ion-icon>&nbsp;Upload Now</button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <img src="{{pathForImage(lastImage)}}" style="width: 100%" *ngIf="lastImage">
+  </ion-card>
+
+  <p>{{consolelog}}</p>
+</ion-content>
