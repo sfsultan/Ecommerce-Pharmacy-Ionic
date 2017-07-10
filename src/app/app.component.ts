@@ -5,16 +5,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Storage } from '@ionic/storage';
 
-import { ProductPage } from '../pages/product/product';
-import { AccountInfoPage } from '../pages/account-info/account-info';
-import { ProductDetailPage } from '../pages/product-detail/product-detail';
-import { AboutPage } from '../pages/about/about';
-import { HomePage } from '../pages/home/home';
-import { OrderPage } from '../pages/order/order';
-import { PrescriptionPage } from '../pages/prescription/prescription';
-import { NetworkServiceProvider } from '../providers/network-service/network-service';
+// import { ProductPage } from '../pages/product/product';
+// import { AccountInfoPage } from '../pages/account-info/account-info';
+// import { ProductDetailPage } from '../pages/product-detail/product-detail';
+// import { AboutPage } from '../pages/about/about';
+// import { HomePage } from '../pages/home/home';
+// import { OrderPage } from '../pages/order/order';
+// import { PrescriptionPage } from '../pages/prescription/prescription';
+// import { CartPage } from '../pages/cart/cart';
 
-import { CartPage } from '../pages/cart/cart';
+import { NetworkServiceProvider } from '../providers/network-service/network-service';
 
 export interface PageInterface {
   title: string;
@@ -39,9 +39,9 @@ export class MyApp {
   // appInfoPages: Array<{title: string, component: any, icon:string}>;
 
   appPages: PageInterface[] = [
-    { title: 'Medicines', name: 'OrderPage', component: OrderPage, tabComponent: ProductPage, index: 0, icon: 'medkit' },
-    { title: 'Upload Prescription', name: 'OrderPage', component: OrderPage, tabComponent: PrescriptionPage, index: 1, icon: 'arrow-dropup-circle' },
-    { title: 'About', name: 'OrderPage', component: AboutPage, tabComponent: AboutPage, index: 2, icon: 'information-circle' },
+    { title: 'Medicines', name: 'OrderPage', component: 'OrderPage', tabComponent: 'ProductPage', index: 0, icon: 'medkit' },
+    { title: 'Upload Prescription', name: 'OrderPage', component: 'OrderPage', tabComponent: 'PrescriptionPage', index: 1, icon: 'arrow-dropup-circle' },
+    { title: 'About', name: 'OrderPage', component: 'AboutPage', tabComponent: 'AboutPage', index: 2, icon: 'information-circle' },
   ];
 
   constructor(
@@ -58,9 +58,9 @@ export class MyApp {
       this.storage.get('hasSeenTutorial')
         .then((hasSeenTutorial) => {
           if (hasSeenTutorial) {
-            this.rootPage = OrderPage;
+            this.rootPage = 'OrderPage';
           } else {
-            this.rootPage = HomePage;
+            this.rootPage = 'HomePage';
           }
           this.initializeApp()
         });
@@ -94,7 +94,7 @@ export class MyApp {
       // Set the root of the nav with params if it's a tab index
     } else {
       this.nav.setRoot(page.name, params).catch((err: any) => {
-        console.log(`Didn't set nav root: ${err}`);
+        console.log("Didn't set nav root: ${err}");
       });
     }
     // this.nav.setRoot(page.component);
@@ -119,11 +119,11 @@ export class MyApp {
   }
 
   openTutorial() {
-    this.nav.setRoot(HomePage);
+    this.nav.setRoot('HomePage');
   }
 
   openAccountInfo() {
-    this.nav.setRoot(AccountInfoPage);
+    this.nav.setRoot('account-page');
   }
 
   platformReady() {

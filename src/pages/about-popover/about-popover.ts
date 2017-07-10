@@ -23,10 +23,10 @@ export class PopoverPage {
     public modalCtrl: ModalController
   ) { }
 
-  support() {
-    this.app.getRootNav().push('SupportPage');
-    this.viewCtrl.dismiss();
-  }
+  // support() {
+  //   this.app.getRootNav().push('SupportPage');
+  //   this.viewCtrl.dismiss();
+  // }
 
   close(url: string) {
     window.open(url, '_blank');

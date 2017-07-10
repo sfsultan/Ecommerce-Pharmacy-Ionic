@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { OrderPage } from '../../pages/order/order';
+// import { OrderPage } from '../../pages/order/order';
 /**
  * Generated class for the HomePage page.
  *
@@ -57,7 +57,7 @@ export class HomePage {
 
 
   showOrderPage() {
-    this.navCtrl.push(OrderPage).then(() => {
+    this.navCtrl.push('OrderPage').then(() => {
       this.storage.set('hasSeenTutorial', 'true');
     })
   }

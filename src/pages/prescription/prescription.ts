@@ -116,8 +116,8 @@ export class PrescriptionPage {
 
   public uploadImage() {
     // Destination URL
-    var url = "http://globalapilumen.loc/api/v1/savePrescription";
-    // var url = "http://www.globalcare.com.pk/api/v1/savePrescription";
+    // var url = "http://globalapilumen.loc/api/v1/savePrescription";
+    var url = "http://www.globalcare.com.pk/api/v1/savePrescription";
 
     // File for Upload
     var targetPath = this.pathForImage(this.lastImage);

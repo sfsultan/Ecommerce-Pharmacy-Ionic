@@ -4,7 +4,7 @@ import { ToastController } from 'ionic-angular';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserDataProvider } from '../../providers/user-data/user-data';
 
-import { OrderPage } from "../order/order";
+// import { OrderPage } from "../order/order";
 
 /**
  * Generated class for the AccountInfoPage page.
@@ -12,7 +12,9 @@ import { OrderPage } from "../order/order";
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
+@IonicPage({
+  name: 'account-page'
+})
 @Component({
   selector: 'page-account-info',
   templateUrl: 'account-info.html',
@@ -35,7 +37,7 @@ export class AccountInfoPage {
     if (form.valid) {
       this.userData.saveAccountInfo(this.account);
       this.generateToast('Data successfully saved.');
-      this.navCtrl.setRoot(OrderPage);
+      this.navCtrl.setRoot('OrderPage');
     }
   }
 

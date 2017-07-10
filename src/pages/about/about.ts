@@ -23,7 +23,7 @@ export class AboutPage {
   }
 
   presentPopover(event: Event) {
-    let popover = this.popoverCtrl.create(PopoverPage);
+    let popover = this.popoverCtrl.create("PopoverPage");
     popover.present({ ev: event });
   }
 

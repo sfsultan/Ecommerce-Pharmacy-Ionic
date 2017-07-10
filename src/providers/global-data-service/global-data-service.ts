@@ -14,8 +14,8 @@ export class GlobalDataServiceProvider {
 
   perpage:number = 10;
   query:string;
-  url:string = "http://globalapilumen.loc/api/v1"
-  // url:string = "http://www.globalcare.com.pk/api/v1"
+  // url:string = "http://globalapilumen.loc/api/v1"
+  url:string = "http://www.globalcare.com.pk/api/v1"
 
   productById:any;
 

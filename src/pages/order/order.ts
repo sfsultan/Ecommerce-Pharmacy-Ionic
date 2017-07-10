@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 
-import { PrescriptionPage } from '../prescription/prescription';
-import { AboutPage } from '../about/about';
-import { ProductPage } from '../product/product';
+// import { PrescriptionPage } from '../prescription/prescription';
+// import { AboutPage } from '../about/about';
+// import { ProductPage } from '../product/product';
 
 /**
  * Generated class for the OrderPage page.
@@ -11,16 +12,17 @@ import { ProductPage } from '../product/product';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-// @IonicPage()
+@IonicPage({
+})
 @Component({
   selector: 'page-order',
   templateUrl: 'order.html',
 })
 export class OrderPage {
   private firstLoaded: boolean = false;
-  tab1Root: any = ProductPage;
-  tab2Root: any = PrescriptionPage;
-  tab3Root: any = AboutPage;
+  tab1Root: any = 'ProductPage';
+  tab2Root: any = 'PrescriptionPage';
+  tab3Root: any = 'AboutPage';
   mySelectedIndex: number;
 
 

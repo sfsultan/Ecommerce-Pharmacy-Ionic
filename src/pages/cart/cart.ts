@@ -5,7 +5,7 @@ import { GlobalDataServiceProvider } from '../../providers/global-data-service/g
 import { AlertController } from 'ionic-angular';
 import { UserDataProvider } from '../../providers/user-data/user-data';
 import { LoadingController } from 'ionic-angular';
-import { ProductPage } from '../product/product';
+// import { ProductPage } from '../product/product';
 /**
  * Generated class for the CartPage page.
  *
@@ -60,7 +60,7 @@ export class CartPage {
     // console.log(index,updateNum);
     this.userData.updateCartItem(index, updateNum);
     if(this.storedCartItems.length <= 0) {
-      this.navCtrl.setRoot(ProductPage);
+      this.navCtrl.setRoot('ProductPage');
     }
   }
 
@@ -124,7 +124,7 @@ export class CartPage {
                 // console.log('Alert closed');
                 console.log(response);
                 if(JSON.parse(response['_body']).success) {
-                  this.navCtrl.setRoot(ProductPage);
+                  this.navCtrl.setRoot('ProductPage');
                   this.userData.emptyCart();
                   this.generateToast('Order has been successfully placed. You will be contacted shortly for confirmation on the provided phone number.', 5000,'middle');
                   alert.dismiss();
@@ -168,6 +168,6 @@ export class CartPage {
 
 
   openProductsPage() {
-      this.navCtrl.setRoot(ProductPage);
+      this.navCtrl.setRoot('ProductPage');
   }
 }

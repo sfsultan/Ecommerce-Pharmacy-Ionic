@@ -8,15 +8,15 @@ import { Network } from '@ionic-native/network';
 import { Diagnostic } from '@ionic-native/diagnostic';
 
 import { MyApp } from './app.component';
-import { ProductPage } from '../pages/product/product';
-import { ProductDetailPage } from '../pages/product-detail/product-detail';
-import { AboutPage } from '../pages/about/about';
+// import { ProductPage } from '../pages/product/product';
+// import { ProductDetailPage } from '../pages/product-detail/product-detail';
+// import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
-import { OrderPage } from '../pages/order/order';
-import { PrescriptionPage } from '../pages/prescription/prescription';
+// import { OrderPage } from '../pages/order/order';
+// import { PrescriptionPage } from '../pages/prescription/prescription';
 
-import { CartPage } from '../pages/cart/cart';
-import { PopoverPage } from '../pages/about-popover/about-popover';
+// import { CartPage } from '../pages/cart/cart';
+// import { PopoverPage } from '../pages/about-popover/about-popover';
 import { AccountInfoPage } from '../pages/account-info/account-info';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -37,15 +37,15 @@ import { SafeHttpProvider } from '../providers/safe-http/safe-http';
 @NgModule({
   declarations: [
     MyApp,
-    ProductPage,
-    AccountInfoPage,
-    ProductDetailPage,
-    AboutPage,
-    PopoverPage,
-    HomePage,
-    OrderPage,
-    PrescriptionPage,
-    CartPage
+    // ProductPage,
+    // AccountInfoPage,
+    // ProductDetailPage,
+    // AboutPage,
+    // PopoverPage,
+    // HomePage,
+    // OrderPage,
+    // PrescriptionPage,
+    // CartPage
   ],
   imports: [
     BrowserModule,
@@ -53,9 +53,9 @@ import { SafeHttpProvider } from '../providers/safe-http/safe-http';
     FormsModule,
     IonicModule.forRoot(MyApp, {}, {
       links: [
-        { component: ProductPage, name: 'ProductPage', segment: 'products' },
-        { component: AboutPage, name: 'About', segment: 'about' },
-        { component: HomePage, name: 'Tutorial', segment: 'tutorial' },
+        { component: 'ProductPage', name: 'ProductPage', segment: 'products' },
+        { component: 'AboutPage', name: 'About', segment: 'about' },
+        { component: 'HomePage', name: 'Tutorial', segment: 'tutorial' },
         // { component: OrderPage, name: 'OrderPage', segment: 'OrderPage' },
       ]
     }),
@@ -64,20 +64,19 @@ import { SafeHttpProvider } from '../providers/safe-http/safe-http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ProductPage,
-    ProductDetailPage,
+    // ProductPage,
+    // ProductDetailPage,
     AccountInfoPage,
-    AboutPage,
-    PopoverPage,
+    // AboutPage,
+    // PopoverPage,
     HomePage,
-    OrderPage,
-    PrescriptionPage,
-    CartPage
+    // OrderPage,
+    // PrescriptionPage,
+    // CartPage
   ],
   providers: [
     Camera,
     File,
-    Storage,
     Transfer,
     FilePath,
     StatusBar,

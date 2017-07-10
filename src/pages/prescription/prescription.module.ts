@@ -9,8 +9,8 @@ import { PrescriptionPage } from './prescription';
   imports: [
     IonicPageModule.forChild(PrescriptionPage),
   ],
-  exports: [
-    PrescriptionPage
-  ]
+  // exports: [
+  //   PrescriptionPage
+  // ]
 })
 export class PrescriptionPageModule {}

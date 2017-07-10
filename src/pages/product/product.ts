@@ -4,7 +4,7 @@ import { GlobalDataServiceProvider } from '../../providers/global-data-service/g
 import { UserDataProvider } from '../../providers/user-data/user-data';
 import { AlertController } from 'ionic-angular';
 
-import { CartPage } from '../cart/cart';
+// import { CartPage } from '../cart/cart';
 
 /**
  * Generated class for the ProductPage page.
@@ -134,7 +134,7 @@ export class ProductPage {
     if(this.userData.listCartItems().length == 0) {
       this.showAlert('Help', 'Your cart is empty. Try adding some products to it.')
     } else {
-      this.navCtrl.setRoot(CartPage);
+      this.navCtrl.setRoot('CartPage');
     }
   }
 
