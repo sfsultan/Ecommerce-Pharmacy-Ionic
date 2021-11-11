@@ -1,26 +1,11 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+This is a mobile app built with Ionic. A really awesome and framework to work with.
 
-## How to use this template
+## Purpose
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/driftyco/ionic2-app-base).
+This is for a pharmacies which aim to tap into the multi-billion dollar ecommerce industry and deliver products to the customers to their homes.
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/driftyco/ionic2-app-base).
-
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
-```
-
-Then, to run it, cd into `mySideMenu` and run:
-
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
-
+![](https://play-lh.googleusercontent.com/bNl8FjMJlF9n15H5V46XG2Oxmt4bZur51JYfLe2hvVegcxDwvmjF9CT2ypcL9LpZ4w=w720-h310-rw)
+![](https://play-lh.googleusercontent.com/NFajFXKtNe89DHbAWRcODOaxDVByaHNI9h4u218Nu-mKp9vyQqVinS6FeOgCm7Vq66Qn=w720-h310-rw)
+![](https://play-lh.googleusercontent.com/KiZcCzpcVAYFeuN-dB7t9O0ybx0tT09_KKjPip2jrVox-eOvV66vtYzHK8RVOQAhvw=w720-h310-rw)
+![](https://play-lh.googleusercontent.com/59dysImaJ2tCkBF0f00kFodmzdtihwDVEJ2u1252s_uQzvmuDPddlYaLSDMLj__Uew=w720-h310-rw)
+![](https://play-lh.googleusercontent.com/nWk6ThHSVYhFXPN5rnMTXGJoC0Ct-WH_2iFc_dIKWmPAl-w2ADkaEtno1mpoRTcqbt8=w720-h310-rw)
